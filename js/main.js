@@ -50,6 +50,8 @@ const sr = ScrollReveal({
 });
 
 sr.reveal(`.header`, { delay: 100, origin: "top" });
+sr.reveal(`.button__floating-wsp`, { delay: 100, origin: "bottom" });
+
 
 /*============= SLIDER AUTOMÁTICO + ANIMACIÓN ===============*/
 const slides = document.querySelectorAll(".banner-slide");
@@ -82,3 +84,211 @@ setInterval(nextSlide, 6000);
 
 // mostrar primero con animación
 showSlide(index);
+
+/*============= ICON QUESTIONS ===============*/
+
+const faqItems = document.querySelectorAll('.faq-item');
+
+faqItems.forEach(item => {
+    const question = item.querySelector('.faq-question');
+    
+    question.addEventListener('click', () => {
+        // Cerrar otros items
+        faqItems.forEach(otherItem => {
+            if (otherItem !== item) {
+                otherItem.classList.remove('active');
+            }
+        });
+        
+        // Toggle el item actual
+        item.classList.toggle('active');
+    });
+});
+
+
+/*============= SHOW SCROLL UP ===============*/
+
+const scrollUp = () => {
+const scrollUp = document.getElementById("scroll-up");
+  // When the scroll is higher than 350 viewport height, add the show-scroll class
+window.scrollY >= 350
+    ? scrollUp.classList.add("show-scroll")
+    : scrollUp.classList.remove("show-scroll");
+};
+
+window.addEventListener("scroll", scrollUp);
+
+/*============= SCROLL SECTIONS ACTIVE LINK ===============*/
+
+const sections = document.querySelectorAll("section[id]");
+
+const scrollActive = () => {
+const scrollDown = window.scrollY;
+
+sections.forEach((current) => {
+    const sectionHeight = current.offsetHeight;
+    const sectionTop = current.offsetTop - 100;
+    const sectionId = current.getAttribute("id");
+    const sectionLink = document.querySelector(
+    ".nav__menu a[href*=" + sectionId + "]"
+    );
+
+    if (scrollDown >= sectionTop && scrollDown < sectionTop + sectionHeight) {
+        sectionLink.classList.add("active-link");
+    } else {
+        sectionLink.classList.remove("active-link");
+    }
+  });
+};
+
+window.addEventListener("scroll", scrollActive);
+window.addEventListener("load", scrollActive); 
+
+/*============= SCROLL SERVICE ===============*/
+
+document.addEventListener("DOMContentLoaded", () => {
+    const slider1 = document.querySelector("#servis .slider-wrapper");
+    if (!slider1) return;
+
+    const sectorstrack = slider1.querySelector(".sectors-track");
+    const sectorcard = slider1.querySelectorAll(".sector-card");
+    const buttonnext = slider1.querySelector(".button-next");
+    const buttonprev = slider1.querySelector(".button-prev");
+
+    const slidesToShow = 3;
+    const totalCards = sectorcard.length;
+    let index = totalCards;
+    let cardWidth;
+
+    // --- Clonamos al inicio y al final solo dentro del primer slider ---
+    sectorcard.forEach((card) => {
+        const cloneStart = card.cloneNode(true);
+        const cloneEnd = card.cloneNode(true);
+        sectorstrack.appendChild(cloneEnd);
+        sectorstrack.insertBefore(cloneStart, sectorstrack.firstChild);
+    });
+
+    // --- Calcula el ancho real de cada card ---
+    function getCardWidth() {
+        const card = slider1.querySelector(".sector-card");
+        return card.getBoundingClientRect().width;
+    }
+
+    // --- Inicialización ---
+    function init() {
+        cardWidth = getCardWidth();
+        sectorstrack.style.transition = "none";
+        sectorstrack.style.transform = `translateX(-${index * cardWidth}px)`;
+    }
+    init();
+
+    // --- Movimiento manual ---
+    function moveSlider(direction) {
+        if (direction === "next") {
+        index++;
+        } else {
+        index--;
+        }
+
+        sectorstrack.style.transition = "transform 0.6s ease";
+        sectorstrack.style.transform = `translateX(-${index * cardWidth}px)`;
+
+        // --- Reset cuando llega al inicio o al final ---
+        sectorstrack.addEventListener(
+        "transitionend",
+        () => {
+            if (index >= totalCards * 2) {
+            sectorstrack.style.transition = "none";
+            index = totalCards;
+            sectorstrack.style.transform = `translateX(-${index * cardWidth}px)`;
+            }
+            if (index <= totalCards - slidesToShow) {
+            sectorstrack.style.transition = "none";
+            index = totalCards;
+            sectorstrack.style.transform = `translateX(-${index * cardWidth}px)`;
+            }
+        },
+        { once: true }
+        );
+    }
+
+    // --- Botones ---
+    buttonnext.addEventListener("click", () => moveSlider("next"));
+    buttonprev.addEventListener("click", () => moveSlider("prev"));
+
+    // --- Recalcula al redimensionar ---
+    window.addEventListener("resize", init);
+});
+
+
+/*============= SCROLL NOTICIAS ===============*/
+
+document.addEventListener("DOMContentLoaded", () => {
+const sliders = document.querySelectorAll(".slider-wrapper");
+
+    sliders.forEach((slider) => {
+        const track = slider.querySelector(".sectors-track");
+        const originalCards = Array.from(slider.querySelectorAll(".sector-card"));
+        const nextBtn = slider.querySelector(".button-next");
+        const prevBtn = slider.querySelector(".button-prev");
+
+        const slidesToShow = 3;
+        const totalCards = originalCards.length;
+        let index = totalCards;
+        let cardWidth;
+
+        // --- Clonamos solo los originales ---
+        originalCards.forEach((card) => {
+        const cloneStart = card.cloneNode(true);
+        const cloneEnd = card.cloneNode(true);
+        track.appendChild(cloneEnd);
+        track.insertBefore(cloneStart, track.firstChild);
+        });
+
+        // --- Calcular ancho ---
+        function getCardWidth() {
+        const card = slider.querySelector(".sector-card");
+        return card.getBoundingClientRect().width;
+        }
+
+        function init() {
+        cardWidth = getCardWidth();
+        track.style.transition = "none";
+        track.style.transform = `translateX(-${index * cardWidth}px)`;
+        }
+        init();
+
+        function moveSlider(direction) {
+        if (direction === "next") {
+            index++;
+        } else {
+            index--;
+        }
+
+        track.style.transition = "transform 0.6s ease";
+        track.style.transform = `translateX(-${index * cardWidth}px)`;
+
+        track.addEventListener(
+            "transitionend",
+            () => {
+            if (index >= totalCards * 2) {
+                track.style.transition = "none";
+                index = totalCards;
+                track.style.transform = `translateX(-${index * cardWidth}px)`;
+            }
+            if (index <= totalCards - slidesToShow) {
+                track.style.transition = "none";
+                index = totalCards;
+                track.style.transform = `translateX(-${index * cardWidth}px)`;
+            }
+            },
+            { once: true }
+        );
+        }
+
+        nextBtn.addEventListener("click", () => moveSlider("next"));
+        prevBtn.addEventListener("click", () => moveSlider("prev"));
+
+        window.addEventListener("resize", init);
+    });
+});
