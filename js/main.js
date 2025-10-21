@@ -145,78 +145,61 @@ window.addEventListener("scroll", scrollActive);
 window.addEventListener("load", scrollActive); 
 
 /*============= SCROLL SERVICE ===============*/
-
 document.addEventListener("DOMContentLoaded", () => {
-    const slider1 = document.querySelector("#servis .slider-wrapper");
-    if (!slider1) return;
+    const slider = document.querySelector(".slider-wrapper-1");
+    const track = slider.querySelector(".sectors-track");
+    const cards = Array.from(slider.querySelectorAll(".sector-card"));
+    const nextBtn = slider.querySelector(".button-next");
+    const prevBtn = slider.querySelector(".button-prev");
 
-    const sectorstrack = slider1.querySelector(".sectors-track");
-    const sectorcard = slider1.querySelectorAll(".sector-card");
-    const buttonnext = slider1.querySelector(".button-next");
-    const buttonprev = slider1.querySelector(".button-prev");
-
-    const slidesToShow = 3;
-    const totalCards = sectorcard.length;
+    const totalCards = cards.length;
     let index = totalCards;
-    let cardWidth;
 
-    // --- Clonamos al inicio y al final solo dentro del primer slider ---
-    sectorcard.forEach((card) => {
+    // --- Clonaciones para infinito ---
+    cards.forEach(card => {
         const cloneStart = card.cloneNode(true);
         const cloneEnd = card.cloneNode(true);
-        sectorstrack.appendChild(cloneEnd);
-        sectorstrack.insertBefore(cloneStart, sectorstrack.firstChild);
+        track.appendChild(cloneEnd);
+        track.insertBefore(cloneStart, track.firstChild);
     });
 
-    // --- Calcula el ancho real de cada card ---
+    // --- Calcular ancho real ---
     function getCardWidth() {
-        const card = slider1.querySelector(".sector-card");
+        const card = slider.querySelector(".sector-card");
         return card.getBoundingClientRect().width;
     }
 
-    // --- Inicialización ---
     function init() {
         cardWidth = getCardWidth();
-        sectorstrack.style.transition = "none";
-        sectorstrack.style.transform = `translateX(-${index * cardWidth}px)`;
+        track.style.transition = "none";
+        track.style.transform = `translateX(-${index * cardWidth}px)`;
     }
+    let cardWidth;
     init();
 
-    // --- Movimiento manual ---
     function moveSlider(direction) {
-        if (direction === "next") {
-        index++;
-        } else {
-        index--;
+        if (direction === "next") index++;
+        else index--;
+
+        track.style.transition = "transform 0.6s ease";
+        track.style.transform = `translateX(-${index * cardWidth}px)`;
+
+        track.addEventListener("transitionend", () => {
+        if (index >= totalCards * 2 - 3) { // siempre basado en 3 visibles
+            track.style.transition = "none";
+            index = totalCards;
+            track.style.transform = `translateX(-${index * cardWidth}px)`;
         }
-
-        sectorstrack.style.transition = "transform 0.6s ease";
-        sectorstrack.style.transform = `translateX(-${index * cardWidth}px)`;
-
-        // --- Reset cuando llega al inicio o al final ---
-        sectorstrack.addEventListener(
-        "transitionend",
-        () => {
-            if (index >= totalCards * 2) {
-            sectorstrack.style.transition = "none";
+        if (index <= 2) {
+            track.style.transition = "none";
             index = totalCards;
-            sectorstrack.style.transform = `translateX(-${index * cardWidth}px)`;
-            }
-            if (index <= totalCards - slidesToShow) {
-            sectorstrack.style.transition = "none";
-            index = totalCards;
-            sectorstrack.style.transform = `translateX(-${index * cardWidth}px)`;
-            }
-        },
-        { once: true }
-        );
+            track.style.transform = `translateX(-${index * cardWidth}px)`;
+        }
+        }, { once: true });
     }
 
-    // --- Botones ---
-    buttonnext.addEventListener("click", () => moveSlider("next"));
-    buttonprev.addEventListener("click", () => moveSlider("prev"));
-
-    // --- Recalcula al redimensionar ---
+    nextBtn.addEventListener("click", () => moveSlider("next"));
+    prevBtn.addEventListener("click", () => moveSlider("prev"));
     window.addEventListener("resize", init);
 });
 
@@ -291,4 +274,41 @@ const sliders = document.querySelectorAll(".slider-wrapper");
 
         window.addEventListener("resize", init);
     });
+});
+
+
+/*============= SCROLL TESTIMONIALS ===============*/
+
+document.addEventListener("DOMContentLoaded", () => {
+    const trackTesti = document.querySelector(".testimonial-cards");
+    const cardsTesti = document.querySelectorAll(".testimonial-card");
+    const totalTesti = cardsTesti.length;
+    const visibleTesti = 2;
+    let indexTesti = 0;
+
+    // Clonar los primeros para el loop infinito
+    cardsTesti.forEach(card => {
+        const clone = card.cloneNode(true);
+        trackTesti.appendChild(clone);
+    });
+
+    // Calcular el ancho real del card (incluye gap)
+    const cardWidth = cardsTesti[0].offsetWidth + 32; // 32px = gap de 2rem
+
+    function moveTestiSlider() {
+        indexTesti++;
+        trackTesti.style.transition = "transform 0.8s ease-in-out";
+        trackTesti.style.transform = `translateX(-${cardWidth * indexTesti}px)`;
+
+        // Reinicio suave
+        if (indexTesti >= totalTesti) {
+        setTimeout(() => {
+            trackTesti.style.transition = "none";
+            trackTesti.style.transform = "translateX(0)";
+            indexTesti = 0;
+        }, 850);
+        }
+    }
+
+    setInterval(moveTestiSlider, 3000);
 });

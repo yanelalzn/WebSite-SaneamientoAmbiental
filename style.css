@@ -73,7 +73,7 @@ img {
     overflow: hidden;
 }
 .mb-48 {
-    margin-bottom: clamp(24px, 2.5vw, 96px);
+    margin-bottom: clamp(24px, 2.5vw, 96px) !important;
 }
 :root {
     --header-height: 6rem;
@@ -434,7 +434,6 @@ img {
 }
 .sector-inf{
     display: flex;
-    height: 5vw;
 }
 .sector-inf h3{
     width: 60%;
@@ -442,7 +441,7 @@ img {
     align-items: center;
     background: rgba(244, 180, 0, 0.3);
     justify-content: space-between;
-    padding-left: 1.5rem;
+    padding: 1rem 1.5rem;
     font-weight: 500;
 }
 .sector-inf a{
@@ -481,8 +480,10 @@ img {
     width: min(100%, 1200px);
     margin: auto;
 }
-.bg-grey{
+.bg-serv{
     background-color: var(--grey-color);
+    padding-top: 10rem;
+    margin-top: -11rem;
 }
 .fs-title{
     font-size: 30px !important;
@@ -651,28 +652,30 @@ img {
 /* ===== TESTIMONIALS SECTION ===== */
 
 .testimonials {
-    padding: 80px 0;
+    padding: 60px 0;
     background: var(--white-color);
 }
 .container-testimonials {
-    width: min(100%, 1200px);
+    width: min(100%, 1300px);
     margin: auto;
     text-align: center;
+    padding: 3rem 2rem;
 }
 .container-testimonials h2 {
     font-size: 38px;
     color: var(--color-blue, #002855);
     font-weight: 800;
-    margin-bottom: 5rem;
+    margin-bottom: 4rem;
 }
 .container-testimonials h2 span {
     color: var(--color-yellow, #f4b400);
 }
 .testimonial-cards {
     display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
+    flex-wrap: nowrap;
     gap: 2rem;
+    transition: transform 0.8s ease-in-out;
+    margin-left: 5px;
 }
 .testimonial-card {
     position: relative;
@@ -738,6 +741,17 @@ img {
     font-weight: 600;
     font-size: 0.95rem;
 }
+.testimonial-slider-track {
+    overflow: hidden;
+    position: relative;
+    width: 100%;
+    box-sizing: border-box;
+    padding: 2rem 0;
+}
+.testimonial-card {
+    flex: 0 0 calc((100% / 2) - 1rem);
+    box-sizing: border-box;
+}
 
 /* =====================QUESTION==================== */
 
@@ -745,7 +759,7 @@ img {
     width: 100%;
     height: 100%;
     background-image: url(img/banner-question.jpg);
-    background-size: 250%;
+    background-size: 100% 100%;
     background-position: bottom left;
     background-repeat: no-repeat;
     background-attachment: fixed;
@@ -1128,77 +1142,7 @@ footer{
     transform: translateY(0);
 }
 
-
-
-
-
-@media (max-width:768px) {
-    .brands-section {
-        padding: 40px 20px;
-    }
-
-    .brands-title {
-        font-size: 24px;
-        margin-bottom: 30px;
-    }
-
-    .carousel-item {
-        width: 120px;
-        height: 60px;
-    }
-
-    .carousel-wrapper::before,
-    .carousel-wrapper::after {
-        width: 50px;
-    }
-}
-
 @media (max-width: 768px) {
-    .container-inf-quest h2 {
-        font-size: 1.8rem;
-    }
-
-    .question-text {
-        font-size: 0.95rem;
-    }
-
-    .faq-question {
-        padding: 16px;
-    }
-
-    .faq-question:hover {
-        padding-left: 16px;
-    }
-}
-
-/* ===== RESPONSIVE ===== */
-@media (max-width: 900px) {
-    .testimonial-card {
-        width: 90%;
-    }
-}
-/* ======= RESPONSIVE ======= */
-@media (max-width: 900px) {
-    .sect-card {
-        width: 100%;
-        flex-direction: column;
-    }
-
-    .sect-img img {
-        height: 250px;
-    }
-
-    .sect-inf {
-        text-align: center;
-        align-items: center;
-    }
-
-    .sect-inf button {
-        align-self: center;
-    }
-}
-
-@media (max-width: 600px) {
     /* HEADER */
     .container {
         margin-inline: 1.5rem;
@@ -1247,7 +1191,16 @@ footer{
     .show-menu {
         right: 0;
     }
+    .testimonial-card {
+        flex: 0 0 calc((100% / 1) - 1rem);
+    }
 
+}
+
+@media (max-width: 600px) {
+    .section{
+        padding-block: 3rem;
+    }
     /* BANNER */
     .banner{
         margin: 6rem 0;
@@ -1268,6 +1221,9 @@ footer{
     .banner-img{
         height: 500px;
     }
+    .banner-title{
+        font-size: 40px;
+    }
 
     /* ABOUT US */
     .about-us-image, .about-us-content{
@@ -1277,6 +1233,197 @@ footer{
         padding: 60px 15px;
     }
     .about-us-image img{
-        height: 400px;
+        height: 350px;
+    }
+    
+    /* Service */
+
+    .title-heading h2{
+        font-size: 35px;
+        line-height: 38px;
+    }
+    .sect-card {
+        width: 90%;
+        flex-direction: column;
+    }
+    .sect-card .sect-img, .sect-card .sect-inf{
+        width: 100%;
+    }
+    
+    .sect-img img {
+        height: 250px;
+    }
+    .sect-inf {
+        text-align: center;
+        align-items: center;
+    }
+    .sect-inf button {
+        align-self: center;
+    }
+    .fs-title{
+        font-size: 25px !important;
+        line-height: 25px !important;
+        width: 80%;
+        margin: 0 auto;
+    }
+    .bg-serv{
+        padding-top: 8rem;
+        margin-top: -9rem;
+    }
+    .service-btn{
+        margin: 3rem 0 0 0;
+    }
+    .container-card{
+        padding-top: 2rem;
+    }
+    .sector-card{
+        flex: 0 0 100%;
+    }
+    .button-prev{
+        left: 15px;
+    }
+    .button-next{
+        right: 15px;
+    }
+    .button-prev, .button-next{
+        top: 40%;
+    }
+
+    /* Contact */
+    .banner-contact h2{
+        line-height: 30px;
+        letter-spacing: 0px;
+    }
+
+    /* Testimonials */
+
+    .testimonials{
+        padding: 0;
+    }
+
+    /* Question */
+
+    .container-inf-quest h2 {
+        font-size: 1.8rem;
+    }
+    .question-text {
+        font-size: 0.95rem;
+    }
+    .faq-question {
+        padding: 16px;
+    }
+    .faq-question:hover {
+        padding-left: 16px;
+    }
+
+    /* Clientes */
+
+    .brands-section {
+        padding: 40px 20px;
+    }
+    .brands-title {
+        font-size: 24px;
+        margin-bottom: 30px;
+    }
+    .carousel-item {
+        width: 120px;
+        height: 60px;
+    }
+    .carousel-wrapper::before,
+    .carousel-wrapper::after {
+        width: 50px;
+    }
+
+    /* Footer */
+
+    .newsletter-form{
+        flex-direction: column;
+    }
+    .newsletter-form button{
+        justify-content: center;
+    }
+    .form-inbox{
+        padding: 40px 20px;
+    }
+    .ft-down{
+        flex-direction: column;
+    }
+    .ft-down p{
+        text-align: center;
+        padding-bottom: 10px;
+    }
+}
+
+@media screen and (min-width: 600px) and (max-width: 1150px){
+
+    /* Banner */
+    .banner{
+        height: 50vh;
+        margin: 6rem 0 6rem;
+    }
+    .banner-img{
+        height: 50vh;
+    }
+    .banner-content{
+        max-width: 35%;
+        left: 50%;
+    }
+    .banner-title{
+        font-size: 2rem;
+    }
+    /* About us */
+    .about-us-image img{
+        height: 300px;
+    }
+    .about-us-content h1{
+        font-size: 20px;
+    }
+    .about-us-content p{
+        font-size: 12px;
+        margin-bottom: 10px;
+    }
+
+    /* Service */
+
+    .sector-card { 
+        flex: 0 0 50%; 
+    }
+    .button-prev{
+        left: 15px;
+    }
+    .button-next{
+        right: 15px;
+    }
+    .button-prev, .button-next{
+        top: 40%;
+    }
+    .sect-card{
+        width: 70%;
+    }
+
+    /* Footer */
+    .footer-main{
+        justify-content: center;
+    }
+    .footer-content{
+        width: min(95%, 1400px);
+    }
+    .container {
+        margin-inline: 1.5rem;
+    }
+    .sector-card img{
+        height: 30vh !important;
+    }
+    .sect-card .sect-img{
+        height: 30vh !important;
+    }
+}
+
+@media screen and (min-width: 842px) and (max-width: 1200px){
+    .footer-section {
+        flex: none !important;
+    }
+    .footer-main {
+    justify-content: left;
     }
 }
