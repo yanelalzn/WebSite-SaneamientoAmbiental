@@ -50,6 +50,7 @@ const sr = ScrollReveal({
 });
 
 sr.reveal(`.header`, { delay: 100, origin: "top" });
+sr.reveal(`.banner-pd p`, { delay: 100, origin: "left" });
 sr.reveal(`.button__floating-wsp`, { delay: 100, origin: "bottom" });
 
 
