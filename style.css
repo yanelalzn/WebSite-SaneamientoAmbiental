@@ -913,6 +913,9 @@ img {
 .carousel-item:hover {
     transform: scale(1.1);
 }
+.carousel-item .carousel-wt{
+    max-height: max-content;
+}
 .brand-logo {
     max-width: 100%;
     max-height: 100%;
