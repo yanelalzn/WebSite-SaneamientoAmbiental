@@ -205,20 +205,25 @@ img {
     margin: auto;
     border-radius: 30px;
     display: block;
+    object-fit: cover;
 }
 
 /* Contenido del banner */
 .banner-content {
+    width: 100%;
     text-align: center;
     position: absolute;
-    top: 30%;
+    top: 0;
     left: 58%;
-    transform: translateY(-50%);
     color: var(--white-color);
-    max-width: 25%;
+    max-width: 30%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 .banner-title {
-    font-size: 3rem;
+    font-size: 3.5rem;
     line-height: 1.2;
     font-weight: var(--font-bold);
 }
@@ -230,28 +235,6 @@ img {
     color: var(--color-blue);
     padding: 0 0.3em;
     border-radius: 5px;
-}
-.banner-text {
-    margin-top: 1rem;
-    font-size: 1.1rem;
-    font-weight: var(--font-regular);
-}
-
-/* Botón del banner */
-.btn-banner{
-    margin-top: 1.5rem;
-    background-color: var(--white-color);
-    color: var(--color-blue);
-    padding: 0.8rem 1.6rem;
-    border: none;
-    border-radius: 50px;
-    font-weight: var(--font-semi-bold);
-    cursor: pointer;
-    transition: background-color 0.9s;
-}
-.btn-banner:hover {
-    background-color: var(--color-blue);
-    color: var(--white-color);
 }
 
 /* ===== BOTONES DE NAVEGACIÓN ===== */
@@ -303,11 +286,11 @@ img {
     flex-wrap: wrap;
 }
 .about-us-image, .about-us-content{
-    width: 40%;
+    width: 45%;
 }
 .about-us-image img {
     width: 100%;
-    height: 450px;
+    height: 500px;
     border-radius: 20px;
 }
 .about-us-content h1 {
@@ -315,6 +298,7 @@ img {
     font-weight: bold;
     margin-bottom: 20px;
     color: var(--white-color);
+    text-transform: uppercase;
 }
 .about-us-content p {
     font-size: 16px;
@@ -434,6 +418,7 @@ img {
 }
 .sector-inf{
     display: flex;
+    height: 5rem;
 }
 .sector-inf h3{
     width: 60%;
@@ -471,7 +456,7 @@ img {
     border-top: 1px solid rgba(0, 0, 0, 0.5);
 }
 .sector-card .account p{
-    color: #92949f;
+    color: #1d1e22;
 }
 
 /* ===========SERVICE============ */
@@ -489,87 +474,63 @@ img {
     font-size: 30px !important;
 }
 .container-card {
-    width: 100%;
+    width: 80%;
+    margin: auto;
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
     gap: 2rem;
 }
+.container-cards{
+    max-width: 900px;
+    width: 100%;
+    margin: auto;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 2rem;
+    margin-bottom: 5rem;
+    object-fit: cover;
+}
 .sect-card {
-    width: 45%;
     background: #fff;
     border-radius: 12px;
     overflow: hidden;
-    display: flex;
-    align-items: stretch;
-    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08);
-    transition: box-shadow 0.3s ease;
+    box-shadow: 6px 6px 0px 0px rgba(0, 0, 0, 0.08);
+    transition: box-shadow 0.9s ease;
     cursor: pointer;
-}
-.sect-card .sect-img{
-    width: 50%;
-    height: 40vh;
-    overflow: hidden;
-    border-radius: 0;
-}
-.sect-card .sect-img img{
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    transition: transform 0.6s ease;
-}
-.sect-card .sect-inf{
-    width: 50%;
-}
-.sect-card:hover .sect-img img {
-    transform: scale(1.1);
-}
-.sect-card:hover {
-    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
-}
-
-/* ======= INFORMATION======= */
-
-.sect-inf {
-    flex: 1;
     padding: 2rem;
+    width: 23%;
     display: flex;
     flex-direction: column;
-    justify-content: center;
-    text-align: center;
+    gap: 12px;
+}
+.sect-cards {
+    background: #fff;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 6px 6px 0px 0px rgba(0, 0, 0, 0.08);
+    transition: box-shadow 0.9s ease;
+    cursor: pointer;
+    padding: 2rem;
+    width: 22%;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+.sect-card:hover{
+    box-shadow: 0px 0px 0px 0px rgba(0, 0, 0, 0.08);
+}
+.sect-icon i{
+    font-size: 40px;
 }
 .sect-inf h3 {
-    font-size: 20px;
-    font-weight: 700;
-    margin-bottom: 0.6rem;
-    color: var(--color-blue);
-}
-.sect-inf h3 span {
-    color: var(--color-yellow);
-}
-.sect-inf p {
     font-size: 15px;
-    color: #555;
-    margin-bottom: 1.5rem;
-    line-height: 1.4;
+    font-weight: 400;
+    text-align: left;
 }
 
 /* ======= BOTÓN ======= */
-.sect-inf button {
-    align-self: center;
-    background: var(--color-blue);
-    color: #fff;
-    border: none;
-    padding: 10px 22px;
-    border-radius: 20px;
-    cursor: pointer;
-    font-weight: 600;
-    transition: all 0.3s ease;
-}
-.sect-inf button:hover {
-    background: var(--color-yellow);
-    color: #000;
-}
 .service-btn{
     display: flex;
     justify-content: center;
@@ -758,7 +719,7 @@ img {
 .container-quest {
     width: 100%;
     height: 100%;
-    background-image: url(img/banner-question.jpg);
+    background-image: url(img/product-img.png);
     background-size: 100% 100%;
     background-position: bottom left;
     background-repeat: no-repeat;
@@ -766,91 +727,21 @@ img {
     display: flex;
     align-items: center;
     justify-content: center;
-    padding: 20px;
 }
 .contain-quest {
-    max-width: 900px;
     width: 100%;
-    padding: 60px 0;
+    height: 100%;
+    background-color: #002855c7;
 }
 .container-inf-quest {
     text-align: center;
-    margin-bottom: 50px;
+    margin: 5rem 0 50px;
 }
 .container-inf-quest h2 {
     font-size: 38px;
     color: var(--white-color);
     font-weight: 600;
     letter-spacing: -0.5px;
-}
-.container-inf-quest h2 .highlight {
-    color: var(--color-yellow);
-    font-weight: 700;
-}
-.faq-list {
-    display: flex;
-    flex-direction: column;
-    gap: 12px;
-}
-.faq-item {
-    background: rgba(255, 255, 255, 0.05);
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    border-radius: 8px;
-    overflow: hidden;
-    transition: all 0.3s ease;
-}
-.faq-item:hover {
-    background: rgba(255, 255, 255, 0.08);
-    border-color: rgba(251, 191, 36, 0.3);
-}
-.faq-question {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 20px;
-    cursor: pointer;
-    user-select: none;
-    transition: all 0.3s ease;
-}
-.faq-question:hover {
-    padding-left: 24px;
-}
-.question-text {
-    color: var(--white-color);
-    font-size: 1rem;
-    font-weight: 500;
-    flex: 1;
-    line-height: 1.5;
-}
-.faq-icon {
-    width: 24px;
-    height: 24px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: var(--color-yellow);
-    transition: transform 0.3s ease;
-    flex-shrink: 0;
-    margin-left: 16px;
-}
-.faq-item.active .faq-icon {
-    transform: rotate(180deg);
-}
-.faq-answer {
-    max-height: 0;
-    overflow: hidden;
-    transition: max-height 0.3s ease;
-    background: rgba(255, 255, 255, 0.02);
-    border-top: 1px solid rgba(255, 255, 255, 0.05);
-}
-.faq-item.active .faq-answer {
-    max-height: 500px;
-}
-.answer-text {
-    padding: 20px;
-    color: rgba(255, 255, 255, 0.85);
-    font-size: 0.95rem;
-    line-height: 1.6;
 }
 
 /* ===================MARCAS================== */
@@ -872,9 +763,6 @@ img {
     font-weight: 600;
     margin-bottom: 50px;
     color: var(--color-blue);
-}
-.brands-title .highlight {
-    color: var(--color-yellow);
 }
 .carousel-wrapper {
     position: relative;
@@ -937,6 +825,20 @@ img {
     font-weight: var(--font-bold);
     margin-top: 20px;
 }
+.cert-containter{
+    width: 90%;
+    margin: auto;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 1rem;
+    align-items: center;
+}
+.cert-containter img{
+    width: 20%;
+    height: auto;
+}
+
 
 /* ===============FOOTER=================== */
 
@@ -945,51 +847,33 @@ footer{
 }
 .footer-content{
     color: var(--white-color);
-    width: min(100%, 1400px);
-    margin: 0 auto;
+    max-width: 1120px;
+    margin: auto;
 }
 .footer-main{
     padding: 60px 40px;
     display: flex;
     gap: 40px;
-    justify-content: space-between;
+    justify-content: left;
     flex-wrap: wrap;
+    max-width: 900px;
 }
 .copyright{
     background-color: #014F9B;
 }
 .footer-section{
-    flex: 1;
-    min-width: 150px;
-}
-.footer-section:nth-child(2){
-    flex: 1;
-    max-width: 50px;
-}
-.footer-section:nth-child(4){
-    flex: 1;
-    max-width: 500px;
-}
-.footer-section h3{
-    font-size: 18px;
-    font-weight: 600;
-    margin-bottom: 20px;
-    color: var(--white-color);
-}
-.footer-section h2{
-    margin-bottom: 20px;
-}
-.footer-section p{
-    font-size: 14px;
-    line-height: 1.6;
-    color: #e0e0e0;
-    margin-bottom: 15px;
-    width: 80%;
+    width: 30%;
 }
 .social-links{
     display: flex;
     gap: 15px;
     margin-top: 20px;
+}
+.footer-section h3, .footer-section h2{
+    margin-bottom: 1rem;
+}
+.footer-section p{
+    margin-bottom: 1rem;
 }
 .social-links a{
     display: inline-flex !important;
@@ -1073,20 +957,6 @@ footer{
 .newsletter-form button:hover {
     background-color: #ffb300;
 }
-.form-inbox{
-    border: 1px solid #fff;
-    padding: 40px 50px;
-    border-radius: 20px;
-    margin: 0 0 auto;
-}
-.form-inbox h3{
-    font-size: 35px;
-    text-align: center;
-}
-.form-inbox p{
-    text-align: center;
-    width: 100% !important;
-}
 .copyright{
     border-top: 1px solid rgba(255, 255, 255, 0.1);
     font-size: 13px;
@@ -1096,7 +966,7 @@ footer{
     display: flex;
     justify-content: space-between;
     align-items: center;
-    width: min(100%, 1400px);
+    max-width: 1120px;
     margin: 0 auto;
     padding: 20px 40px;
 }
@@ -1217,10 +1087,6 @@ footer{
         left: 0;
         max-width: 100%;
     }
-    .banner-text{
-        width: 70%;
-        margin: 1rem auto;
-    }
     .banner-img{
         height: 500px;
     }
@@ -1248,13 +1114,6 @@ footer{
     .sect-card {
         width: 90%;
         flex-direction: column;
-    }
-    .sect-card .sect-img, .sect-card .sect-inf{
-        width: 100%;
-    }
-    
-    .sect-img img {
-        height: 250px;
     }
     .sect-inf {
         text-align: center;
@@ -1336,6 +1195,12 @@ footer{
     .carousel-wrapper::after {
         width: 50px;
     }
+    .sect-cards{
+        width: 55%;
+    }
+    .cert-containter img{
+        width: 40%;
+    }
 
     /* Footer */
 
@@ -1354,6 +1219,9 @@ footer{
     .ft-down p{
         text-align: center;
         padding-bottom: 10px;
+    }
+    .footer-section{
+        width: 100%;
     }
 }
 
@@ -1406,12 +1274,15 @@ footer{
         top: 40%;
     }
     .sect-card{
-        width: 70%;
+        width: 40%;
     }
 
     /* Footer */
     .footer-main{
-        justify-content: center;
+        justify-content: left;
+    }
+    .footer-section{
+        width: 30%;
     }
     .footer-content{
         width: min(95%, 1400px);
@@ -1422,13 +1293,19 @@ footer{
     .sector-card img{
         height: 30vh !important;
     }
-    .sect-card .sect-img{
-        height: 30vh !important;
-    }
 
     /* Nosotros */
     .img-pg-about{
         height: 30vh !important;
+    }
+    .sect-cards{
+        width: 23%;
+    }
+    .cert-containter img{
+        height: auto !important;
+    }
+    .cert-containter{
+        padding-top: 2rem;
     }
 }
 
