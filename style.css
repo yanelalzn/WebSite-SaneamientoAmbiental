@@ -223,7 +223,7 @@ img {
 .banner-title {
     font-size: 3.5rem;
     line-height: 1.2;
-    font-weight: var(--font-bold);
+    font-weight: var(--font-semi-bold);
 }
 .banner-title span {
     color: var(--color-yellow);
@@ -234,6 +234,17 @@ img {
     padding: 0 0.3em;
     border-radius: 5px;
 }
+.hero-contact{
+    background-color: #002855;
+    padding: 10px;
+    color: white;
+    display: flex;
+    gap: 5px;
+}
+.inf-hero{
+
+}
+
 
 /* ===== BOTONES DE NAVEGACIÓN ===== */
 .prev, .next {
