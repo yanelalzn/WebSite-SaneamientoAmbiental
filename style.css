@@ -855,7 +855,7 @@ img {
     background-position: center;
     background-repeat: no-repeat;
 }
-.img-portada-responsive{
+.img-portada-responsive, .img-portada-tablet{
     display: none;
 }
 .inf-bnr{
@@ -1343,7 +1343,7 @@ footer{
 
     /* FRANCHISE */
 
-    .img-portada{
+    .img-portada, .img-portada-tablet{
         display: none;
     }
     .img-portada-responsive{
@@ -1422,7 +1422,7 @@ footer{
     .banner-content{
         top: 0;
         max-width: 35%;
-        left: 50%;
+        left: 55%;
         height: 40vh;
         display: flex;
         flex-direction: column;
@@ -1491,6 +1491,35 @@ footer{
     }
     .cert-containter{
         padding-top: 2rem;
+    }
+    .img-portada-tablet{
+        width: 100%;
+        height: 420px;
+        background-image: url("img/franchise-tablet.png");
+        background-size: 100% 100%;
+        background-position: center;
+        background-repeat: no-repeat;
+        display: flex;
+    }
+    .img-portada, .img-portada-responsive{
+        display: none;
+    }
+    .footer-main{
+        gap: 0;
+    }
+    .footer-down{
+        justify-content: initial;
+        gap: 4vh;
+    }
+    .hero-contact{
+        width: 22%;
+        top: 70%;
+    }
+    .inf-hero p{
+        font-size: 10px;
+    }
+    .title-hero i {
+        font-size: 25px;
     }
 }
 
