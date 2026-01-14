@@ -244,10 +244,9 @@ img {
     gap: 5px;
 }
 .first-column-bnr, .second-column-bnr{
-    padding: 10px 0;
+    padding: 10px 2rem;
     color: white;
     display: flex;
-    justify-content: center;
     align-items: center;
     gap: 10px;
     background-color: #002855;
@@ -561,6 +560,7 @@ img {
     height: 60vh;
     background: url("img/mapa-peru.jpg") center/cover no-repeat;
     background-attachment: fixed;
+    background-position: center top;
     align-items: center;
     display: flex;
     justify-content: center;
@@ -580,19 +580,14 @@ img {
     padding: 0 1rem;
 }
 .banner-contact h2 {
-    font-size: 3rem;
+    font-size: 4rem;
     font-weight: 800;
     color: var(--color-yellow);
-    line-height: 52px;
     margin-bottom: 2rem;
     font-family: "Racing Sans One", sans-serif;
     letter-spacing: 3px;
-    line-height: 40px;
-}
-.banner-contact h2 > strong{
-    font-size: 1.5rem;
-    color: white;
-    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    text-shadow: 0 4px 12px rgba(0, 0, 0, 0.8);
+    text-transform: uppercase;
 }
 .btn-contact {
     display: inline-flex;
@@ -669,9 +664,11 @@ img {
 .client-logo {
     width: 60px;
     height: 60px;
-    background-color: #666;
+    background-size: 100%;
     border-radius: 4px;
     margin-right: 1rem;
+    display: flex;
+    align-items: center;
 }
 .client-info h3 {
     font-size: 1.1rem;
@@ -1010,7 +1007,7 @@ footer{
     align-items: center;
     max-width: 1120px;
     margin: 0 auto;
-    padding: 20px 40px;
+    padding: 20px 0;
 }
 .footer-down{
     display: flex;
@@ -1131,9 +1128,6 @@ footer{
     .show-menu {
         right: 0;
     }
-    .testimonial-card {
-        flex: 0 0 calc((100% / 1) - 1rem);
-    }
 
 }
 @media (max-width: 500px) {
@@ -1178,6 +1172,9 @@ footer{
     }
     .banner-pd{
         margin-top: 4rem !important;
+    }
+    .first-column-bnr, .second-column-bnr{
+        padding: 10px 1rem;
     }
 
     /* ABOUT US */
@@ -1240,8 +1237,9 @@ footer{
 
     /* Contact */
     .banner-contact h2{
-        line-height: 47px;
-        letter-spacing: 0px;
+        line-height: 32px;
+        letter-spacing: 2px;
+        font-size: 2rem;
     }
     .contact-section{
         padding: 60px 20px !important;
@@ -1331,8 +1329,8 @@ footer{
     /* Contenido del banner */
 
     .hero-contact{
-        width: 50%;
-        top: 75%;
+        width: auto;
+        top: 71%;
     }
     .hero-contact .inf-hero p{
         font-size: 12px;
@@ -1407,6 +1405,13 @@ footer{
         flex-direction: column;
         gap: 30px;
     }
+    .container-quest{
+        background-size: cover;
+        background-position: left center;
+    }
+    .testimonial-card {
+        flex: 0 0 calc((100% / 1) - 1rem);
+    }
 }
 
 @media screen and (min-width: 600px) and (max-width: 1150px){
@@ -1441,6 +1446,9 @@ footer{
     .about-us-content p{
         font-size: 12px;
         margin-bottom: 10px;
+    }
+    .first-column-bnr, .second-column-bnr{
+        padding: 10px 1rem;
     }
 
     /* Service */
@@ -1477,6 +1485,9 @@ footer{
     .sector-card img{
         height: 30vh !important;
     }
+    .ft-down{
+        width: min(95%, 1400px);
+    }
 
     /* Nosotros */
     .img-pg-about{
@@ -1512,7 +1523,7 @@ footer{
         gap: 4vh;
     }
     .hero-contact{
-        width: 22%;
+        width: auto;
         top: 70%;
     }
     .inf-hero p{
@@ -1520,6 +1531,13 @@ footer{
     }
     .title-hero i {
         font-size: 25px;
+    }
+    .container-quest{
+        background-size: cover;
+        background-position: left center;
+    }
+    .banner-contact h2{
+        line-height: 65px;
     }
 }
 
